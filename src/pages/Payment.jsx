@@ -53,7 +53,9 @@ const totalPrice=classData?.price;
             <CheckoutForm price={totalPrice} classId={classData?._id}  />
           </Elements>
         ) : (
-          <p>Loading payment details...</p>
+          <div className="flex justify-center items-center h-screen">
+            <span className="loading loading-dots loading-lg"></span>
+          </div>
         )}
       </div>
     </div>
