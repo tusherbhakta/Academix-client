@@ -32,7 +32,9 @@ const PopularCourses = () => {
         <h2 className="text-3xl font-bold mb-6">Popular Courses</h2>
 
         {loading ? (
-          <p>Loading popular courses...</p>
+          <div className="flex justify-center items-center h-screen">
+          <span className="loading loading-dots loading-lg"></span>
+        </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {classes.map((course) => (
