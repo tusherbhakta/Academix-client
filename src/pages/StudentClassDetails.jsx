@@ -20,7 +20,7 @@ const StudentClassDetails = () => {
   if (!classData) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <p>Loading...</p>
+        <span className="loading loading-ball loading-lg"></span>
       </div>
     );
   }
