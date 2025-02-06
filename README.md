@@ -1,4 +1,3 @@
-![Academix](https://i.ibb.co/9H6DXMmV/image.png)
 <img src="https://i.ibb.co/9H6DXMmV/image.png">
 
 # Academix
