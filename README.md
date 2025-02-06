@@ -1,4 +1,5 @@
 ![Academix](https://i.ibb.co/9H6DXMmV/image.png)
+<img src="https://i.ibb.co/9H6DXMmV/image.png">
 
 # Academix
 Academix is an innovative educational platform built using the MERN stack (MongoDB, Express.js, React, Node.js) to streamline class management, facilitate student-teacher interaction, and improve learning experiences. Academix brings a user-friendly interface with various tools for both students and educators.
