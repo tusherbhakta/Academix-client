@@ -23,7 +23,7 @@ const TeacherJoinSection = () => {
             Share your knowledge, grow your teaching career, and shape the future.
           </p>
           <div>
-            <Link to='/teach-academix' className="bg-yellow-500 text-gray-800 px-6 py-3 rounded-lg text-xl font-semibold shadow-md hover:bg-yellow-600 transition duration-300">
+            <Link to='/teach-academix' className="bg-yellow-400 text-gray-800 px-6 py-3 rounded-lg text-xl font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
               Become a Teacher
             </Link>
           </div>

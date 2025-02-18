@@ -101,7 +101,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-dark-1 sticky top-0 w-full z-50 text-white md:py-2 bg-black bg-opacity-90 shadow-md">
+    <div className="bg-dark-1 sticky top-0 w-full z-50 text-white md:py-2 bg-gray-900 bg-opacity-90 shadow-md">
       <div className="navbar mx-auto max-w-7xl">
         {/* Logo Section */}
         <div className="navbar-start">
@@ -155,7 +155,7 @@ const Navbar = () => {
           <div className="navbar-end space-x-2">
             <NavLink
               to="/login"
-              className="px-4 py-2 border rounded-lg text-white hover:bg-yolo hover:border-yolo"
+              className="px-4 py-2 border rounded-lg text-white hover:text-yellow-400 hover:border-yellow-400"
             >
               Login
             </NavLink>

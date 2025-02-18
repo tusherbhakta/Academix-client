@@ -6,7 +6,7 @@ export const Main = () => {
   return (
     <div className=''>
       <Navbar />
-      <div className='min-h-screen max-w-7xl mx-auto px-4'>
+      <div>
         <Outlet />
       </div>
       <Footer />

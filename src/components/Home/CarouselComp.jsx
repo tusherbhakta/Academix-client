@@ -72,13 +72,13 @@ const CarouselComp = () => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     to={banner.linkPrimary.path}
-                    className="px-6 py-3 bg-lime-600 hover:bg-lime-500 text-white font-bold rounded shadow-lg transition-all"
+                    className="px-6 py-3 bg-yellow-400 hover:bg-yellow-500 text-white font-bold rounded shadow-lg transition-all"
                   >
                     {banner.linkPrimary.text}
                   </Link>
                   <Link
                     to={banner.linkSecondary.path}
-                    className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold rounded shadow-lg transition-all"
+                    className="px-6 py-3 bg-gray-600 hover:bg-gray-800 text-white font-bold rounded shadow-lg transition-all"
                   >
                     {banner.linkSecondary.text}
                   </Link>
@@ -93,3 +93,4 @@ const CarouselComp = () => {
 };
 
 export default CarouselComp;
+
