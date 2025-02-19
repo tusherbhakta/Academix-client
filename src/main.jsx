@@ -8,6 +8,7 @@ import {
 import { RouterProvider } from 'react-router-dom'
 import { router } from './routes/AppRouter'
 import AuthProvider from './providers/AuthProvider'
+import ThemeProvider from './Context/ThemeContext'
 
 
 const queryClient = new QueryClient()
@@ -17,10 +18,11 @@ const queryClient = new QueryClient()
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-
-    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>
+      </ThemeProvider>
     </AuthProvider>
   </StrictMode>,
 )
