@@ -22,6 +22,7 @@ import MyEnrollDetails from "../pages/dashboard/student/MyEnrollDetails";
 import PrivateRoute from "./PrivateRoute";
 import About from "../pages/About";
 import StudentClassDetails from "../pages/StudentClassDetails";
+import ErrorPage from "../pages/ErrorPage";
 // import Payment from "../pages/Payment";
 
 
@@ -30,7 +31,7 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main />,
-        errorElement: <h1>404 Not Found</h1>,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 path: '/',
