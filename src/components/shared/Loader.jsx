@@ -1,12 +1,9 @@
-import React from 'react';
-import { Spinner } from 'daisyui';
+import React from 'react'
 
 const Loader = () => {
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gray-900'>
-      <Spinner className='text-yellow-400 w-16 h-16' />
-    </div>
-  );
-};
+    <div className='min-h-screen'>Loading</div>
+  )
+}
 
-export default Loader;
+export default Loader

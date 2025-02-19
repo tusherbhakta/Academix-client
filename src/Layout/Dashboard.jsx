@@ -11,7 +11,7 @@ const Dashboard = () => {
         <div className="">
             <Sidebar/>
         </div>
-        <div className="w-full p-4">
+        <div className="w-full ">
             <Outlet/>
         </div>
       

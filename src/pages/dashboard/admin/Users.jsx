@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-// import SectionTitle from '../../components/ui/SectiontTitle';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
@@ -84,57 +83,57 @@ const Users = () => {
     };
 
     return (
-        <div>
-            {/* <SectionTitle heading="All Users" subHeading="Manage All Users" /> */}
-
+        <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6">
             <div className="max-w-5xl mx-auto">
-                <div className="">
-                    <h2>Total Users ({users.length})</h2>
+                <div className="mb-4">
+                    <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
+                        Total Users ({users.length})
+                    </h2>
                 </div>
 
                 <div className="overflow-x-auto rounded-xl">
-                    <table className="table table-zebra">
+                    <table className="min-w-full border border-gray-300 dark:border-gray-700 rounded-lg shadow-md">
                         {/* Table Head */}
-                        <thead className="text-center bg-yolo/80 text-white">
+                        <thead className="text-center bg-yellow-400 dark:bg-yellow-600 text-white">
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Actions</th>
+                                <th className="px-4 py-2">#</th>
+                                <th className="px-4 py-2">Name</th>
+                                <th className="px-4 py-2">Email</th>
+                                <th className="px-4 py-2">Role</th>
+                                <th className="px-4 py-2">Actions</th>
                             </tr>
                         </thead>
-                        <tbody className="text-center">
+                        <tbody className="text-center bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200">
                             {users.map((user, index) => (
-                                <tr key={user._id}>
-                                    <th>{index + 1}</th>
-                                    <td>{user.name}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.role || 'Normal User'}</td>
+                                <tr key={user._id} className="border-t border-gray-300 dark:border-gray-700">
+                                    <th className="px-4 py-2">{index + 1}</th>
+                                    <td className="px-4 py-2">{user.name}</td>
+                                    <td className="px-4 py-2">{user.email}</td>
+                                    <td className="px-4 py-2">{user.role || 'Normal User'}</td>
                                     <td>
-                                        <div className="w-full flex justify-center items-center px-4">
+                                        <div className="flex flex-wrap justify-center items-center px-4 gap-2">
                                             {/* Role Buttons */}
                                             <button
-                                                className="btn btn-sm btn-primary mx-1"
+                                                className="px-3 py-1 text-sm font-medium text-white bg-blue-500 dark:bg-blue-600 rounded-lg hover:bg-blue-600 dark:hover:bg-blue-700"
                                                 onClick={() => handleRoleChange(user._id, 'admin')}
                                             >
                                                 Make Admin
                                             </button>
                                             <button
-                                                className="btn btn-sm btn-secondary mx-1"
+                                                className="px-3 py-1 text-sm font-medium text-white bg-green-500 dark:bg-green-600 rounded-lg hover:bg-green-600 dark:hover:bg-green-700"
                                                 onClick={() => handleRoleChange(user._id, 'teacher')}
                                             >
                                                 Make Teacher
                                             </button>
                                             <button
-                                                className="btn btn-sm btn-warning mx-1"
+                                                className="px-3 py-1 text-sm font-medium text-white bg-yellow-500 dark:bg-yellow-600 rounded-lg hover:bg-yellow-600 dark:hover:bg-yellow-700"
                                                 onClick={() => handleRoleChange(user._id, 'normal')}
                                             >
                                                 Make Normal
                                             </button>
                                             {/* Delete Button */}
                                             <button
-                                                className="btn btn-sm btn-error mx-1"
+                                                className="px-3 py-1 text-sm font-medium text-white bg-red-500 dark:bg-red-600 rounded-lg hover:bg-red-600 dark:hover:bg-red-700"
                                                 onClick={() => handleDeleteUser(user._id)}
                                             >
                                                 Delete
