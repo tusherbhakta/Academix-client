@@ -59,6 +59,99 @@
 
 // export default PartnersSection;
 
+// import { useEffect, useRef, useState } from "react";
+// import partnerImg1 from "../../assets/unnamed.jpg";
+// import partnerImg2 from "../../assets/images.jpg";
+// import partnerImg3 from "../../assets/download.jpg";
+// import partnerImg4 from "../../assets/physic-wallah.jpg";
+
+// const partners = [
+//   {
+//     logo: partnerImg1,
+//     name: "TechEd Solutions",
+//     description: "Empowering students with cutting-edge educational tools and resources.",
+//   },
+//   {
+//     logo: partnerImg2,
+//     name: "SkillHub Academy",
+//     description: "Offering premium skill development courses and certification programs.",
+//   },
+//   {
+//     logo: partnerImg3,
+//     name: "CareerBoost Inc.",
+//     description: "Connecting students with top internship and job opportunities worldwide.",
+//   },
+//   {
+//     logo: partnerImg4,
+//     name: "EduCare Foundation",
+//     description: "Supporting students with scholarships and academic counseling services.",
+//   },
+// ];
+
+// const PartnersSection = () => {
+//   const scrollContainer = useRef(null);
+//   const [speed, setSpeed] = useState(40); // Default speed in seconds
+
+//   // Adjust speed dynamically based on screen size
+//   useEffect(() => {
+//     const updateSpeed = () => {
+//       if (window.innerWidth < 768) {
+//         setSpeed(20); // Faster on small screens
+//       } else {
+//         setSpeed(40); // Normal speed on larger screens
+//       }
+//     };
+
+//     updateSpeed();
+//     window.addEventListener("resize", updateSpeed);
+//     return () => window.removeEventListener("resize", updateSpeed);
+//   }, []);
+
+//   return (
+//     <section className="pb-12 pt-20 bg-gray-50 relative overflow-hidden">
+//       <div className="max-w-7xl mx-auto px-6 text-center">
+//         <h2 className="text-3xl font-bold text-gray-800 mb-6">Our Partners & Collaborators</h2>
+//         <p className="text-gray-600 mb-8">
+//           We’re proud to collaborate with industry leaders and organizations to bring the best opportunities to our students.
+//         </p>
+
+//         {/* Scrolling Container */}
+//         <div className="relative w-full overflow-hidden">
+//           <div
+//             ref={scrollContainer}
+//             className="flex items-center space-x-8 whitespace-nowrap"
+//             onMouseEnter={() => (scrollContainer.current.style.animationPlayState = "paused")}
+//             onMouseLeave={() => (scrollContainer.current.style.animationPlayState = "running")}
+//             style={{
+//               animation: `scrolling ${speed}s linear infinite`,
+//             }}
+//           >
+//             {[...partners, ...partners].map((partner, index) => (
+//               <div key={index} className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-64">
+//                 <img src={partner.logo} alt={partner.name} className="h-20 w-32 object-contain mb-4 rounded-md" />
+//                 <h3 className="text-xl font-semibold text-gray-800">{partner.name}</h3>
+//                 <p className="text-gray-600 text-sm mt-2">{partner.description}</p>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Infinite Scrolling CSS */}
+//       <style>
+//         {`
+//           @keyframes scrolling {
+//             from { transform: translateX(0); }
+//             to { transform: translateX(-50%); }
+//           }
+//         `}
+//       </style>
+//     </section>
+//   );
+// };
+
+// export default PartnersSection;
+
 import { useRef } from "react";
 import partnerImg1 from "../../assets/unnamed.jpg";
 import partnerImg2 from "../../assets/images.jpg";
@@ -143,3 +236,4 @@ const PartnersSection = () => {
 };
 
 export default PartnersSection;
+
