@@ -77,7 +77,7 @@ const Footer = () => {
         <div className="container mx-auto flex justify-between items-center px-6 lg:px-12">
           <p className="text-sm text-gray-400">© 2025 Academix. All rights reserved.</p>
           <nav className="flex space-x-4">
-            <Link to="/privacy-policy" className="text-gray-400 hover:text-yellow-400">
+            <Link to="/privacypolicy" className="text-gray-400 hover:text-yellow-400">
               Privacy Policy
             </Link>
             <Link to="/terms-of-service" className="text-gray-400 hover:text-yellow-400">

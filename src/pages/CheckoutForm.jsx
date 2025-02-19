@@ -88,7 +88,7 @@ const CheckoutForm = ({price, classId}) => {
             <PaymentElement />
             <button
                 type="submit"
-                className="btn btn-primary w-full mt-4"
+                className="py-4 rounded-lg hover:bg-yellow-500 bg-yellow-400 w-full mt-4"
                 disabled={!stripe || !elements || loading}
             >
                 {loading ? "Processing..." : "Pay Now"}

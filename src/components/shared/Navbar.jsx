@@ -332,7 +332,7 @@ const Navbar = () => {
 
           {user ? (
             <>
-              <p>{user.email}</p>
+              {/* <p>{user.email}</p> */}
               <button
                 onClick={handleLogout}
                 className="btn btn-sm btn-error rounded-full"

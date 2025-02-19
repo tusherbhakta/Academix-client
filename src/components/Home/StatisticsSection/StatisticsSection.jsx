@@ -1,25 +1,26 @@
-import { useEffect, useState } from 'react';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
-import statImg from '../../../assets/statistics.jpg';
+import { useEffect, useState } from "react";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import statImg from "../../../assets/statistics.jpg";
 
 const StatisticsSection = () => {
   const [data, setData] = useState();
   const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
-    axiosPublic.get('/api/statistics').then((res) => {
-      // console.log(res.data);
+    axiosPublic.get("/api/statistics").then((res) => {
       setData(res.data);
     });
   }, [axiosPublic]);
 
   return (
-    <section className="py-12">
+    <section className="py-12 bg-gray-100 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-black">Website Statistics</h2>
-          <p className="text-lg text-gray-500 mt-4">
+          <h2 className="text-4xl font-extrabold text-black dark:text-white">
+            Website Statistics
+          </h2>
+          <p className="text-lg text-gray-500 dark:text-gray-300 mt-4">
             Discover key insights and statistics about our platform's usage and growth.
           </p>
         </div>
@@ -49,9 +50,9 @@ const StatisticsSection = () => {
           {/* Right Side: Image */}
           <div className="w-full lg:w-1/2">
             <img
-              src={statImg} // Replace with a relevant image
+              src={statImg}
               alt="Website Statistics"
-              className="rounded-lg shadow-lg w-full object-cover"
+              className="rounded-lg shadow-lg w-full object-cover dark:opacity-90"
             />
           </div>
         </div>
