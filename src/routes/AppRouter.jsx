@@ -23,6 +23,8 @@ import PrivateRoute from "./PrivateRoute";
 import About from "../pages/About";
 import StudentClassDetails from "../pages/StudentClassDetails";
 import ErrorPage from "../pages/ErrorPage";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import TermsOfService from "../pages/TermsofService";
 // import Payment from "../pages/Payment";
 
 
@@ -48,6 +50,14 @@ export const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <About />
+            },
+            {
+                path: 'privacypolicy',
+                element: <PrivacyPolicy/>
+            },
+            {
+                path: 'terms-of-service',
+                element: <TermsOfService/>
             },
             {
                 path: '/class/details/:id',
