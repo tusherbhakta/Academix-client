@@ -6,7 +6,9 @@ import TeacherJoinSection from '../components/Home/TeacherJoinSection'
 import StudentTestimonials from '../components/Home/StudentTestimonials'
 import WhyChooseUs from '../components/Home/WhyChooseUs'
 import FeaturedCourses from '../components/Home/FeaturedCourses'
+import Newsletter from '../components/Home/Newsletter'
 import { Helmet } from 'react-helmet'
+import SuccessStories from '../components/Home/SuccessStory'
 
 export const Home = () => {
   return (
@@ -18,9 +20,11 @@ export const Home = () => {
       <PartnersSection/>
       <FeaturedCourses/>
       <StatisticsSection/>
+      <SuccessStories/>
       <WhyChooseUs/>
       <TeacherJoinSection/>
       <StudentTestimonials/>
+      {/* <Newsletter/> */}
 
 
     </div>
