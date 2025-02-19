@@ -6,11 +6,11 @@ import axios from 'axios';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const TeachAcademix = () => {
-  const { user } = useAuth(); // Assuming useAuth provides user info
+  const { user } = useAuth();
   const navigate = useNavigate();
-  const [status, setStatus] = useState(''); // Track user's teacher request status
+  const [status, setStatus] = useState('');
 
-  const axiosSecure=useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
   const [formData, setFormData] = useState({
     title: '',
     experience: '',
@@ -18,7 +18,6 @@ const TeachAcademix = () => {
   });
 
   useEffect(() => {
-    // Fetch the user's teacher request status
     const fetchStatus = async () => {
       try {
         const response = await axiosSecure.get(`/api/teacher-requests/${user?.email}`);
@@ -27,9 +26,8 @@ const TeachAcademix = () => {
         console.error('Error fetching teacher request status:', error);
       }
     };
-
     fetchStatus();
-  }, [user?.email,axiosSecure]);
+  }, [user?.email, axiosSecure]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -42,11 +40,9 @@ const TeachAcademix = () => {
       ...formData,
       name: user?.displayName,
       email: user?.email,
-      image: user.photoURL, // Assuming user has a photoURL field
+      image: user.photoURL,
       status: 'pending',
     };
-
-    console.log("data", requestData)
 
     try {
       await axiosSecure.post('/api/teacher-requests', requestData);
@@ -55,7 +51,7 @@ const TeachAcademix = () => {
         title: 'Request Submitted',
         text: 'Your teaching application is under review.',
       });
-      setStatus('pending'); // Update status to pending
+      setStatus('pending');
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -73,7 +69,7 @@ const TeachAcademix = () => {
         title: 'Request Re-submitted',
         text: 'Your teaching application is under review again.',
       });
-      setStatus('pending'); // Update status to pending
+      setStatus('pending');
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -85,7 +81,7 @@ const TeachAcademix = () => {
 
   if (status === 'accepted') {
     return (
-      <div className="text-center p-8">
+      <div className="text-center p-8 dark:bg-gray-900 dark:text-gray-100">
         <h2 className="text-2xl font-bold">You're now a teacher!</h2>
         <p className="mt-4">Thank you for joining us as a teacher on Academix.</p>
       </div>
@@ -94,7 +90,7 @@ const TeachAcademix = () => {
 
   if (status === 'pending') {
     return (
-      <div className="text-center p-8">
+      <div className="text-center p-8 dark:bg-gray-900 dark:text-gray-100">
         <h2 className="text-2xl font-bold">Application Pending</h2>
         <p className="mt-4">Your teaching application is under review. Please wait for the admin's decision.</p>
       </div>
@@ -103,12 +99,12 @@ const TeachAcademix = () => {
 
   if (status === 'rejected') {
     return (
-      <div className="text-center p-8">
+      <div className="text-center p-8 dark:bg-gray-900 dark:text-gray-100">
         <h2 className="text-2xl font-bold">Application Rejected</h2>
         <p className="mt-4">Unfortunately, your application was rejected. You can re-apply below.</p>
         <button
           onClick={handleRequestAnother}
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+          className="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded-lg"
         >
           Request Again
         </button>
@@ -117,12 +113,12 @@ const TeachAcademix = () => {
   }
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 py-20 min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="max-w-lg w-full bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-6">Apply to Teach on Academix</h2>
+    <div className="px-4 sm:px-6 lg:px-8 py-20 min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
+      <div className="max-w-lg w-full bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
+        <h2 className="text-2xl font-bold text-center mb-6 dark:text-gray-100">Apply to Teach on Academix</h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-2">
-            <label htmlFor="title" className="text-dark-2">Title</label>
+            <label htmlFor="title" className="text-gray-700 dark:text-gray-300">Title</label>
             <input
               type="text"
               id="title"
@@ -130,19 +126,19 @@ const TeachAcademix = () => {
               value={formData.title}
               onChange={handleInputChange}
               placeholder="Enter title (e.g., Web Development Teacher)"
-              className="w-full border border-slate-200 rounded-lg py-3 px-5 outline-none bg-transparent"
+              className="w-full border border-yellow-400 focus:border-yellow-400 rounded-lg py-3 px-5 outline-none bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               required
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="experience" className="text-dark-2">Experience Level</label>
+            <label htmlFor="experience" className="text-gray-700 dark:text-gray-300">Experience Level</label>
             <select
               id="experience"
               name="experience"
               value={formData.experience}
               onChange={handleInputChange}
-              className="w-full border border-slate-200 rounded-lg py-3 px-5 outline-none bg-transparent"
+              className="w-full border border-yellow-400 focus:border-yellow-400 rounded-lg py-3 px-5 outline-none bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               required
             >
               <option value="" disabled>Select experience level</option>
@@ -153,13 +149,13 @@ const TeachAcademix = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="category" className="text-dark-2">Category</label>
+            <label htmlFor="category" className="text-gray-700 dark:text-gray-300">Category</label>
             <select
               id="category"
               name="category"
               value={formData.category}
               onChange={handleInputChange}
-              className="w-full border border-slate-200 rounded-lg py-3 px-5 outline-none bg-transparent"
+              className="w-full border border-yellow-400 focus:border-yellow-400 rounded-lg py-3 px-5 outline-none bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               required
             >
               <option value="" disabled>Select category</option>
@@ -171,33 +167,9 @@ const TeachAcademix = () => {
             </select>
           </div>
 
-          <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-dark-2">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={user?.email}
-              disabled
-              className="w-full border border-slate-200 rounded-lg py-3 px-5 outline-none bg-gray-100"
-            />
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label htmlFor="image" className="text-dark-2">Profile Image</label>
-            <input
-              type="text"
-              id="image"
-              name="image"
-              value={user.photoURL || ''}
-              disabled
-              className="w-full border border-slate-200 rounded-lg py-3 px-5 outline-none bg-gray-100"
-            />
-          </div>
-
           <button
             type="submit"
-            className="block text-center py-3 px-4 text-white font-semibold w-full rounded-lg bg-blue-500"
+            className="block text-center py-3 px-4 text-white font-semibold w-full rounded-lg bg-yellow-400 hover:bg-yellow-500 transition"
           >
             Submit for Review
           </button>

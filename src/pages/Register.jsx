@@ -80,11 +80,11 @@ const Register = () => {
 
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 py-20 min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="px-4 sm:px-6 lg:px-8 py-20 min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
         <Helmet>
             <title>Academix | Register</title>
         </Helmet>
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 bg-white items-center">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 bg-white dark:bg-gray-900 items-center">
         {/* Image Section */}
         <div className="hidden md:block order-2">
           <img src={loginImg} alt="login" className="w-full" />
@@ -92,11 +92,11 @@ const Register = () => {
 
         {/* Form Section */}
         <div className="p-8">
-          <h2 className="text-3xl font-bold text-center my-4">Register</h2>
+          <h2 className="text-3xl font-bold text-center dark:text-white my-4">Register</h2>
           <form className="space-y-4" onSubmit={handleSubmit}>
             {/* Name */}
             <div className="flex flex-col w-full gap-2">
-              <label htmlFor="name" className="text-dark-2">Name</label>
+              <label htmlFor="name" className="text-dark-2 dark:text-white">Name</label>
               <input
                 type="text"
                 id="name"
@@ -110,7 +110,7 @@ const Register = () => {
 
             {/* Photo URL */}
             <div className="flex flex-col w-full gap-2">
-              <label htmlFor="photo" className="text-dark-2">Photo</label>
+              <label htmlFor="photo" className="text-dark-2 dark:text-white">Photo</label>
               <input
                 type="url"
                 id="photo"
@@ -124,7 +124,7 @@ const Register = () => {
 
             {/* Email */}
             <div className="flex flex-col w-full gap-2">
-              <label htmlFor="email" className="text-dark-2">Email</label>
+              <label htmlFor="email" className="text-dark-2 dark:text-white ">Email</label>
               <input
                 type="email"
                 id="email"
@@ -138,7 +138,7 @@ const Register = () => {
 
             {/* Password */}
             <div className="flex flex-col w-full gap-2">
-              <label htmlFor="password" className="text-dark-2">Password</label>
+              <label htmlFor="password" className="text-dark-2 dark:text-white ">Password</label>
               <input
                 type="password"
                 id="password"
@@ -161,17 +161,17 @@ const Register = () => {
             </div>
           </form>
 
-          <p className="text-beige text-center my-4">
+          <p className="text-beige dark:text-white text-center my-4">
             Already registered?{' '}
             <span
               onClick={() => navigate('/login')}
-              className="font-semibold cursor-pointer"
+              className="font-semibold dark:text-white cursor-pointer"
             >
               Login Now
             </span>
           </p>
 
-          <div className="flex items-center flex-col justify-center gap-4">
+          <div className="flex items-center flex-col dark:text-white justify-center gap-4">
             <p>Or sign up with</p>
             <SocialSignIn />
           </div>
