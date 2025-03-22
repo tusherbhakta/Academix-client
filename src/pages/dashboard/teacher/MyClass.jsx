@@ -21,9 +21,9 @@ const MyClass = () => {
             params: { email: teacherEmail }, // Send email as query parameter
           });
           setClasses(response.data);
-          setLoading(false);
         } catch (error) {
           console.error('Error fetching classes:', error.response?.data || error.message);
+        } finally {
           setLoading(false);
         }
       }
@@ -53,38 +53,50 @@ const MyClass = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-center text-gray-700 dark:text-gray-300 mt-10">Loading...</div>;
   }
 
   return (
-    <div>
-      <h1 className="text-2xl font-semibold mb-4">Your Classes</h1>
+    <div className="dark:bg-gray-900 min-h-screen px-6 py-10">
+      <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-6">
+        Your Classes
+      </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {classes.map((cls) => (
-          <div key={cls._id} className="border p-4 rounded-lg shadow-lg">
-            <img src={cls.image} alt={cls.title} className="w-full h-48 object-cover mb-4 rounded-md" />
-            <h3 className="text-xl font-semibold">{cls.title}</h3>
-            <p>Instructor: {cls.name}</p>
-            <p>Email: {cls.email}</p>
-            <p>Price: ${cls.price}</p>
-            <p>{cls.description}</p>
-            <p>Status: {cls.status}</p>
+          <div key={cls._id} className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+            <img 
+              src={cls.image} 
+              alt={cls.title} 
+              className="w-full h-48 object-cover mb-4 rounded-md"
+            />
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{cls.title}</h3>
+            <p className="text-gray-600 dark:text-gray-300">Instructor: {cls.name}</p>
+            <p className="text-gray-600 dark:text-gray-300">Email: {cls.email}</p>
+            <p className="text-gray-600 dark:text-gray-300">Price: ${cls.price}</p>
+            <p className="text-gray-600 dark:text-gray-300">{cls.description}</p>
+            <p className={`font-semibold ${cls.status === 'approved' ? 'text-green-500' : 'text-yellow-500'} dark:text-${cls.status === 'approved' ? 'green-400' : 'yellow-400'}`}>
+              Status: {cls.status}
+            </p>
             <div className="mt-4 flex space-x-2">
               <button 
-                className="bg-blue-500 text-white px-4 py-2 rounded"
+                className="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded transition dark:bg-yellow-500 dark:hover:bg-yellow-600"
                 onClick={() => handleUpdateClass(cls._id)}
               >
                 Update
               </button>
               <button 
-                className="bg-red-500 text-white px-4 py-2 rounded"
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded transition dark:bg-red-600 dark:hover:bg-red-700"
                 onClick={() => handleDeleteClass(cls._id)}
               >
                 Delete
               </button>
               <button
-                className={`bg-green-500 text-white px-4 py-2 rounded ${cls.status !== 'approved' ? 'cursor-not-allowed' : ''}`}
+                className={`px-4 py-2 rounded transition ${
+                  cls.status === 'approved' 
+                    ? 'bg-green-500 hover:bg-green-600 text-white dark:bg-green-600 dark:hover:bg-green-700' 
+                    : 'bg-gray-400 text-gray-200 cursor-not-allowed dark:bg-gray-600 dark:text-gray-400'
+                }`}
                 disabled={cls.status !== 'approved'}
                 onClick={() => handleSeeDetails(cls._id)}
               >

@@ -5,7 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 const ClassDetails = () => {
   const { id } = useParams();
   const [classData, setClassData] = useState(null);
-  const [enrollments, setEnrollments] = useState(0);
   const [assignments, setAssignments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -19,14 +18,11 @@ const ClassDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch class details
     const fetchClassDetails = async () => {
       try {
         const classResponse = await axiosSecure.get(`/api/classes/${id}`);
         setClassData(classResponse.data);
-        setEnrollments(classResponse.data.enrollments);
 
-        // Fetch assignments for the class
         const assignmentsResponse = await axiosSecure.get(`/api/assignments/${id}`);
         setAssignments(assignmentsResponse.data);
 
@@ -41,7 +37,6 @@ const ClassDetails = () => {
   }, [id, axiosSecure]);
 
   const totalSubmissions = assignments.reduce((acc, res) => acc + res.submissionCount, 0);
-console.log(totalSubmissions);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -58,68 +53,68 @@ console.log(totalSubmissions);
       };
 
       const response = await axiosSecure.post('/api/assignments', newAssignment);
-
-      // Update assignments table
       setAssignments([...assignments, response.data.assignment]);
-      setShowModal(false); // Close modal
-      setAssignmentForm({ title: '', description: '', deadline: '' }); // Reset form
+      setShowModal(false);
+      setAssignmentForm({ title: '', description: '', deadline: '' });
     } catch (error) {
       console.error('Error creating assignment:', error.response?.data || error.message);
     }
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-center text-gray-700 dark:text-gray-300 mt-10">Loading...</div>;
   }
 
   return (
-    <div>
-      <h1 className="text-2xl font-semibold mb-4">{classData.title} - Class Details</h1>
+    <div className="p-8 min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+      <h1 className="text-3xl text-center font-bold mb-6">{classData.title} - Class Details</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
-        <div className="border p-4 rounded-lg shadow-lg">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        <div className="border p-4 rounded-lg shadow-lg bg-white dark:bg-gray-800 dark:border-gray-600">
           <h3 className="text-xl font-semibold">Total Enrollment</h3>
           <p>{classData.totalEnrollments}</p>
         </div>
-        <div className="border p-4 rounded-lg shadow-lg">
+        <div className="border p-4 rounded-lg shadow-lg bg-white dark:bg-gray-800 dark:border-gray-600">
           <h3 className="text-xl font-semibold">Total Assignments</h3>
           <p>{assignments.length}</p>
         </div>
-        <div className="border p-4 rounded-lg shadow-lg">
+        <div className="border p-4 rounded-lg shadow-lg bg-white dark:bg-gray-800 dark:border-gray-600">
           <h3 className="text-xl font-semibold">Total Submissions</h3>
           <p>{totalSubmissions}</p>
         </div>
       </div>
 
       <button
-        className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+        className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 px-4 py-2 rounded transition dark:bg-yellow-400 dark:hover:bg-yellow-500"
         onClick={() => setShowModal(true)}
       >
         Create Assignment
       </button>
 
       {/* Assignments Table */}
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">
-          <thead className="bg-gray-100">
+      <div className="overflow-x-auto mt-4">
+        <table className="min-w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg">
+          <thead className="bg-gray-100 dark:bg-gray-700">
             <tr>
-              <th className="text-left px-4 py-2 border-b">#</th>
-              <th className="text-left px-4 py-2 border-b">Title</th>
-              <th className="text-left px-4 py-2 border-b">Description</th>
-              <th className="text-left px-4 py-2 border-b">Deadline</th>
-              <th className="text-left px-4 py-2 border-b">Actions</th>
+              <th className="text-left px-4 py-2 border-b dark:border-gray-600">#</th>
+              <th className="text-left px-4 py-2 border-b dark:border-gray-600">Title</th>
+              <th className="text-left px-4 py-2 border-b dark:border-gray-600">Description</th>
+              <th className="text-left px-4 py-2 border-b dark:border-gray-600">Deadline</th>
+              <th className="text-left px-4 py-2 border-b dark:border-gray-600">Actions</th>
             </tr>
           </thead>
           <tbody>
             {assignments.map((assignment, index) => (
-              <tr key={assignment?._id} className="hover:bg-gray-50">
-                <td className="px-4 py-2 border-b">{index + 1}</td>
-                <td className="px-4 py-2 border-b">{assignment?.title}</td>
-                <td className="px-4 py-2 border-b">{assignment?.description}</td>
-                <td className="px-4 py-2 border-b">{new Date(assignment?.deadline).toLocaleDateString()}</td>
-                <td className="px-4 py-2 border-b">
+              <tr key={assignment?._id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
+                <td className="px-4 py-2 border-b dark:border-gray-600">{index + 1}</td>
+                <td className="px-4 py-2 border-b dark:border-gray-600">{assignment?.title}</td>
+                <td className="px-4 py-2 border-b dark:border-gray-600">{assignment?.description}</td>
+                <td className="px-4 py-2 border-b dark:border-gray-600">
+                  {new Date(assignment?.deadline).toLocaleDateString()}
+                </td>
+                <td className="px-4 py-2 border-b dark:border-gray-600">
                   <button
-                    className="bg-red-500 text-white px-2 py-1 rounded text-sm"
+                    className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-sm transition"
                     onClick={() => console.log(`Delete assignment: ${assignment?._id}`)}
                   >
                     Delete
@@ -133,39 +128,39 @@ console.log(totalSubmissions);
 
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Create Assignment</h2>
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Create Assignment</h2>
             <input
               type="text"
               name="title"
               placeholder="Assignment Title"
               value={assignmentForm.title}
               onChange={handleInputChange}
-              className="mb-2 p-2 border border-gray-300 rounded w-full"
+              className="mb-2 p-2 border border-gray-300 dark:border-gray-600 rounded w-full bg-white dark:bg-gray-700 dark:text-gray-300"
             />
             <textarea
               name="description"
               placeholder="Assignment Description"
               value={assignmentForm.description}
               onChange={handleInputChange}
-              className="mb-2 p-2 border border-gray-300 rounded w-full"
+              className="mb-2 p-2 border border-gray-300 dark:border-gray-600 rounded w-full bg-white dark:bg-gray-700 dark:text-gray-300"
             ></textarea>
             <input
               type="date"
               name="deadline"
               value={assignmentForm.deadline}
               onChange={handleInputChange}
-              className="mb-2 p-2 border border-gray-300 rounded w-full"
+              className="mb-2 p-2 border border-gray-300 dark:border-gray-600 rounded w-full bg-white dark:bg-gray-700 dark:text-gray-300"
             />
             <div className="flex justify-end space-x-2">
               <button
-                className="bg-green-500 text-white px-4 py-2 rounded"
+                className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition"
                 onClick={handleCreateAssignment}
               >
                 Add Assignment
               </button>
               <button
-                className="bg-red-500 text-white px-4 py-2 rounded"
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded transition"
                 onClick={() => setShowModal(false)}
               >
                 Close
